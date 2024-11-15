@@ -1,62 +1,47 @@
-// src/components/PriceRangeFilter.jsx
-
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
+import Select from 'react-select';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import AOS styles
 
 const PriceRangeFilter = ({ onPriceRangeChange }) => {
-  const [selectedPriceRange, setSelectedPriceRange] = useState('');
 
-  const handlePriceChange = (event) => {
-    const value = event.target.value;
-    setSelectedPriceRange(value);
-    onPriceRangeChange(value);  // Pass the selected range to the parent component
+
+  useEffect(() => {
+    AOS.init({
+      duration: 2000, // Set the duration for animations
+      easing: 'ease-in-out', // Set the easing function for smooth transitions
+      once: true, // Trigger animation only once
+    });
+  }, []);
+
+  const [selectedPriceRange, setSelectedPriceRange] = useState(null);
+
+  const priceOptions = [
+    { value: 'under-50', label: 'Under $50' },
+    { value: '50-100', label: 'Under $100' },
+    { value: '100-200', label: 'Under $200' },
+    { value: '200-500', label: 'Under $500' },
+    { value: '500-1000', label: 'Under $1000' },
+    { value: 'above-1000', label: 'Above $1000' },
+  ];
+
+  const handlePriceChange = (selectedOption) => {
+    setSelectedPriceRange(selectedOption);
+    onPriceRangeChange(selectedOption ? selectedOption.value : ''); // Pass the selected value to the parent component
   };
 
   return (
-    <div className="space-y-2">
-      <label className="flex items-center">
-        <input
-          type="radio"
-          name="price"
-          value="under-50"
-          checked={selectedPriceRange === 'under-50'}
-          onChange={handlePriceChange}
-          className="mr-2"
-        />
-        Under $50
-      </label>
-      <label className="flex items-center">
-        <input
-          type="radio"
-          name="price"
-          value="50-100"
-          checked={selectedPriceRange === '50-100'}
-          onChange={handlePriceChange}
-          className="mr-2"
-        />
-        $50 - $100
-      </label>
-      <label className="flex items-center">
-        <input
-          type="radio"
-          name="price"
-          value="100-200"
-          checked={selectedPriceRange === '100-200'}
-          onChange={handlePriceChange}
-          className="mr-2"
-        />
-        $100 - $200
-      </label>
-      <label className="flex items-center">
-        <input
-          type="radio"
-          name="price"
-          value="above-200"
-          checked={selectedPriceRange === 'above-200'}
-          onChange={handlePriceChange}
-          className="mr-2"
-        />
-        Above $200
-      </label>
+    <div className=" shadow-xl p-4" >
+      {/* Searchable select dropdown */}
+      <h4 className='font-bold '>Select a  Price Range</h4>
+      <Select
+        value={selectedPriceRange}
+        onChange={handlePriceChange}
+        options={priceOptions}
+        placeholder="Select a price range"
+        isClearable={true}
+        className="w-full"
+      />
     </div>
   );
 };
