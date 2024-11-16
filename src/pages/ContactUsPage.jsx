@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Import AOS styles
+import { toast } from 'react-toastify';
 
 const ContactUsPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -10,9 +11,10 @@ const ContactUsPage = () => {
   };
 
   const handleSubmit = (e) => {
+toast.success('Your Application Sented Success')
     e.preventDefault();
     console.log("Submitted:", formData);
-    alert("Form submitted successfully!");
+   
   };
 
   useEffect(() => {

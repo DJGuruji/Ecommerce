@@ -5,7 +5,7 @@ const ProductView = () => {
     <div className="container mx-auto py-12">
       <div className="flex flex-col md:flex-row">
         <div className="w-full md:w-1/2">
-          <img src="https://via.placeholder.com/500" alt="Product" className="w-full h-auto rounded-lg" />
+          <img src="" alt="Product" className="w-full h-auto rounded-lg" />
         </div>
         <div className="w-full md:w-1/2 p-8">
           <h2 className="text-3xl font-semibold">Product Title</h2>

@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="bg-blue-600 p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-3xl font-semibold text-white">MyEcommerce</h1>
+        <h1 className="text-3xl font-semibold text-white">G-Cart</h1>
 
         {/* Mobile Menu Toggle */}
         <div className="lg:hidden">
