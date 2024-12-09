@@ -8,8 +8,11 @@ import img1 from "../img/lap2.jpeg";
 import img2 from "../img/head.jpeg";
 import img3 from "../img/watch.jpeg";
 import img4 from "../img/speaker.jpeg";
+import { useNavigate } from 'react-router-dom';
 
 const ProductPage = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -86,7 +89,7 @@ const ProductPage = () => {
             <span className="block font-bold text-lg">$500</span>
             <button
               className="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
-             
+             onClick={ ()=> navigate("/checkout")}
             >
               Buy Now
             </button>
@@ -124,6 +127,7 @@ const ProductPage = () => {
             <span className="block font-bold text-lg">${product.price}</span>
             <button
               className="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+              onClick={ ()=> navigate("/checkout")}
             >
               Buy Now
             </button>
